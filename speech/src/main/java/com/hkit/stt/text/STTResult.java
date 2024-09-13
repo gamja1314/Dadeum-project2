@@ -50,7 +50,7 @@ public class STTResult {
     @Column(name = "EXECUTION_TIME") // 실행 시간
     private Double executionTimeSeconds;
 
-    @Column(name = "TOTAL_PROCESSING_TIME")
+    @Column(name = "TOTAL_PROCESSING_TIME") // 총 처리 시간
     private Double totalProcessingTimeSeconds;
 
     @Lob
