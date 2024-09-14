@@ -1,20 +1,112 @@
 <!DOCTYPE html>
 <html layout:decorate="~{layout}" layout:fragment="content" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta charset="UTF-8">
     <title>회원 정보 수정</title>
-   
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        function validatePassword() {
+            const passwordInput = document.getElementById('password');
+            const passwordMessage = document.getElementById('password-message');
+            const password = passwordInput.value;
+            
+            const minLength = 4;
+            const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+            const hasNumber = /\d/.test(password);
+            
+            let isValid = true;
+            let message = "";
+
+            if (password.length > 0 && password.length < minLength) {
+                isValid = false;
+                message += "비밀번호는 최소 4자 이상이어야 합니다. ";
+            }
+
+            if (!hasSpecialChar) {
+                isValid = false;
+                message += "특수문자를 포함해야 합니다. ";
+            }
+
+            if (isValid && password.length > 0) {
+                passwordMessage.innerText = "유효한 비밀번호입니다.";
+                passwordMessage.style.color = "blue";
+            } else if (password.length > 0) {
+                passwordMessage.innerText = message.trim();
+                passwordMessage.style.color = "red";
+            } else {
+                passwordMessage.innerText = "";
+            }
+
+            return isValid;
+        }
+
+        function validateEmail() {
+            const emailInput = document.getElementById('email');
+            const emailMessage = document.getElementById('email-message');
+            const email = emailInput.value;
+
+            const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+            if (emailRegex.test(email)) {
+                emailMessage.innerText = "유효한 이메일입니다.";
+                emailMessage.style.color = "blue";
+                return true;
+            } else {
+                emailMessage.innerText = "올바른 형식의 이메일을 입력해주세요.";
+                emailMessage.style.color = "red";
+                return false;
+            }
+        }
+
+        function validatePhone() {
+            const phoneInput = document.getElementById('phoneNumber');
+            const phoneMessage = document.getElementById('phone-message');
+
+            phoneInput.value = phoneInput.value.replace(/[^0-9]/g, '');
+
+            const phoneRegex = /^\d{11}$/; // 11자리 숫자
+
+            if (phoneRegex.test(phoneInput.value)) {
+                phoneMessage.innerText = "유효한 전화번호입니다.";
+                phoneMessage.style.color = "blue";
+                return true;
+            } else {
+                phoneMessage.innerText = "전화번호는 11자리 숫자로 입력해주세요.";
+                phoneMessage.style.color = "red";
+                return false;
+            }
+        }
+
+        function validateForm() {
+            let errorMessage = ""; // 오류 메시지를 저장할 변수
+
+            if (!validatePassword()) {
+                errorMessage += "비밀번호 형식이 맞지 않습니다.\n";
+            }
+            if (!validateEmail()) {
+                errorMessage += "이메일 형식이 맞지 않습니다.\n";
+            }
+            if (!validatePhone()) {
+                errorMessage += "전화번호 형식이 맞지 않습니다.\n";
+            }
+
+            if (errorMessage) {
+                alert(errorMessage.trim());
+                return false; // 유효성 검사 실패 시 false 반환
+            }
+
+            return true; // 모든 유효성 검사를 통과했으면 true를 반환
+        }
+    </script>
 </head>
 
 <body>
-
     <div class="Modify_container">
-            <h2>회원 정보 수정</h2>
-            <div class="Modify_box">
-            <form th:action="@{/members/modify}" th:object="${memberForm}" method="post">
+        <h2>회원 정보 수정</h2>
+        <div class="Modify_box">
+            <form th:action="@{/members/modify}" th:object="${memberForm}" method="post" onsubmit="return validateForm()">
                 <input type="hidden" th:field="*{memberNum}" />
-                 
                 
-					
                 <div class="Modify_subbox">
                     <label for="id" class="form-label">ID</label>
                     <input type="text" th:field="*{id}" class="form-control" readonly>
@@ -27,17 +119,20 @@
                 
                 <div class="Modify_subbox">
                     <label for="password" class="form-label">비밀번호</label>
-                    <input type="password" th:field="*{password}" class="form-control">
+                    <input type="password" id="password" th:field="*{password}" class="form-control" onkeyup="validatePassword()">
+                    <div id="password-message"></div>
                 </div>
-                                
+                
                 <div class="Modify_subbox">
                     <label for="email" class="form-label">이메일</label>
-                    <input type="email" th:field="*{email}" class="form-control">
+                    <input type="email" id="email" th:field="*{email}" class="form-control" onkeyup="validateEmail()">
+                    <div id="email-message"></div>
                 </div>
                 
                 <div class="Modify_subbox">
                     <label for="phoneNumber" class="form-label">전화번호</label>
-                    <input type="tel" th:field="*{phoneNumber}" class="form-control">
+                    <input type="tel" id="phoneNumber" th:field="*{phoneNumber}" class="form-control" oninput="validatePhone()" maxlength="11">
+                    <div id="phone-message"></div>
                 </div>
                 
                 <div class="modi_submit_btu">
@@ -47,6 +142,5 @@
             </form>
         </div>
     </div>
-
 </body>
 </html>
