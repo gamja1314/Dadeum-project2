@@ -188,12 +188,6 @@ function validateForm() {
     } else if (!validateId()) {
         errorMessage += "ID 형식이 맞지 않습니다.\n";
      }
-    /* 중복확인 버튼 적용되면 -> */
-    /* lse if (!isIdChecked) {
-        errorMessage += "ID 중복 확인을 해주세요.\n";
-    } else if (isIdDuplicate) {
-        errorMessage += "이미 사용 중인 ID입니다.\n";
-    } */
     if (!password) {
         errorMessage += "비밀번호를 입력하세요.\n";
     } else if (!validatePassword()) {
