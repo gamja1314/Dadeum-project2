@@ -18,6 +18,7 @@ Open API를 활용한 음성 인식 웹 사이트로 사용자가 음성 파일�
 
 [![Spring Boot](https://img.shields.io/badge/Spring_Boot-6DB33F?style=flat-square&logo=spring-boot&logoColor=white)](https://spring.io/projects/spring-boot)
 [![Oracle](https://img.shields.io/badge/Oracle-F80000?style=flat-square&logo=oracle&logoColor=white)](https://www.oracle.com/)
+[![SQLDeveloper](https://img.shields.io/badge/SQL_Developer-F80000?style=flat-square&logo=oracle&logoColor=white)](https://www.oracle.com/database/sqldeveloper/)
 
 [![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/)
 [![Postman](https://img.shields.io/badge/Postman-FF6C37?style=flat-square&logo=postman&logoColor=white)](https://www.postman.com/)
