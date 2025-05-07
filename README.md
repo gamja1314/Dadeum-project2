@@ -11,8 +11,12 @@ Open API를 활용한 음성 인식 웹 사이트로 사용자가 음성 파일�
 - 2024.07.22 ~ 2024.08.13
 
 ## 💻 코드 구성
-
-![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=gamja1314&repo=Dadeum-project2&layout=compact&theme=light&title_color=1E90FF&text_color=151515&bg_color=ffffff&border_radius=10)
+| 언어 | 비율 |
+|------|------|
+| <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" width="20" height="20" /> CSS | 62.2% |
+| <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" width="20" height="20" /> Java | 20.6% |
+| <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" width="20" height="20" /> HTML | 16.2% |
+| <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" width="20" height="20" /> JavaScript | 1.0% |
 
 ## 🛠️ 기술 스택
 
